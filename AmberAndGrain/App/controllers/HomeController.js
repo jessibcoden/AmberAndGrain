@@ -1,5 +1,9 @@
-﻿app.controller("HomeController", ["$scope",
-    function ($scope) {
-        $scope.message = "Hello World";
+﻿app.controller("HomeController", ["$scope", "$http",
+    function ($scope, $http) {
+        $scope.message = "Dees Recipees:";
+
+        $http.get("/api/recipes").then(function (result) {
+            $scope.recipes = result.data;
+        });
     }
 ]);
